@@ -1,0 +1,207 @@
+/* Global Styles */
+:root {
+    --whatsapp-green: #075e54;
+    --whatsapp-light-green: #128c7e;
+    --chat-bg: #ece5dd; /* Light, textured background */
+    --sent-bubble: #dcf8c6; /* Light green for sent messages */
+    --received-bubble: #ffffff; /* White for received messages */
+    --text-color: #1f2937;
+    --time-color: #6b7280;
+    --orange-accent: #f59e0b; /* User's preferred accent color */
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f0f2f5;
+}
+
+/* WhatsApp Container (Simulated Phone Screen) */
+.whatsapp-container {
+    width: 100%;
+    max-width: 450px;
+    height: 90vh;
+    max-height: 800px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+    background-color: var(--chat-bg);
+}
+
+/* Chat Header */
+.chat-header {
+    background-color: var(--whatsapp-green);
+    color: white;
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    z-index: 10;
+}
+
+.profile-info {
+    display: flex;
+    align-items: center;
+}
+
+.avatar {
+    font-size: 24px;
+    margin-right: 10px;
+    background-color: var(--whatsapp-light-green);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.contact-name {
+    font-weight: 600;
+    font-size: 18px;
+}
+
+.status {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.7);
+    margin-left: 10px;
+    padding: 2px 6px;
+    border-radius: 4px;
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+/* Chat Area */
+.chat-area {
+    flex-grow: 1;
+    padding: 10px;
+    overflow-y: auto;
+    background-image: url("data:image/svg+xml,%3Csvg width='6' height='6' viewBox='0 0 6 6' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%239C92AC' fill-opacity='0.1' fill-rule='evenodd'%3E%3Cpath d='M5 0h1L0 6V5zm1 5v1H5z'/%3E%3C/g%3E%3C/svg%3E");
+}
+
+/* Message Bubbles */
+.message {
+    display: flex;
+    margin-bottom: 10px;
+    max-width: 85%;
+}
+
+.message.sent {
+    justify-content: flex-end;
+    margin-left: auto;
+}
+
+.message.received {
+    justify-content: flex-start;
+    margin-right: auto;
+}
+
+.message-content {
+    padding: 8px 10px 6px 10px;
+    border-radius: 7.5px;
+    position: relative;
+    font-size: 14px;
+    line-height: 1.3;
+    box-shadow: 0 1px 0.5px rgba(0, 0, 0, 0.13);
+    color: var(--text-color);
+}
+
+.message.sent .message-content {
+    background-color: var(--sent-bubble);
+    border-top-right-radius: 0;
+}
+
+.message.received .message-content {
+    background-color: var(--received-bubble);
+    border-top-left-radius: 0;
+}
+
+.message-time {
+    font-size: 10px;
+    color: var(--time-color);
+    text-align: right;
+    margin-top: 2px;
+    display: block;
+    float: right;
+    margin-left: 10px;
+}
+
+/* Analysis Specific Styling */
+.message.received.analysis-result .message-content {
+    background-color: var(--received-bubble);
+    border-left: 4px solid var(--orange-accent); /* Use orange accent for analysis */
+    white-space: pre-wrap; /* Preserve formatting from the analysis text */
+}
+
+.message.received.analysis-result strong {
+    color: var(--whatsapp-green);
+    font-weight: 700;
+}
+
+/* Input Area */
+.input-area {
+    display: flex;
+    padding: 10px;
+    background-color: #f0f0f0;
+    border-top: 1px solid #e0e0e0;
+}
+
+#message-input {
+    flex-grow: 1;
+    padding: 10px 15px;
+    border-radius: 20px;
+    border: 1px solid #ccc;
+    resize: none;
+    font-size: 16px;
+    margin-right: 10px;
+    max-height: 100px;
+    overflow-y: auto;
+}
+
+#analyze-button {
+    background-color: var(--whatsapp-light-green);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    font-size: 12px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    text-transform: uppercase;
+    line-height: 1;
+    padding: 0;
+}
+
+#analyze-button:hover {
+    background-color: var(--whatsapp-green);
+}
+
+#analyze-button:disabled {
+    background-color: #b0b0b0;
+    cursor: not-allowed;
+}
+
+/* Utility for analysis text formatting */
+.analysis-content {
+    font-family: monospace;
+    white-space: pre-wrap;
+    font-size: 13px;
+}
+
+.analysis-content strong {
+    display: block;
+    margin-top: 5px;
+    color: var(--whatsapp-green);
+}

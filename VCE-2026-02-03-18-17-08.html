@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Message Analyser — Deep Layer</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>👁️</text></svg>">
+</head>
+<body>
+    <div class="whatsapp-container">
+        <header class="chat-header">
+            <div class="profile-info">
+                <div class="avatar">👁️</div>
+                <div class="contact-name">Message Analyser</div>
+                <div class="status">online</div>
+            </div>
+        </header>
+
+        <main class="chat-area" id="chat-area">
+            <!-- Initial analysis message -->
+            <div class="message received initial-message">
+                <div class="message-content">
+                    <p>Welcome to the Message Analyser. Type a message below and press 'Analyze' to reveal its deep-layer psychological signatures.</p>
+                </div>
+                <div class="message-time">10:00 AM</div>
+            </div>
+            
+            <!-- Analysis results will be appended here -->
+        </main>
+
+        <footer class="input-area">
+            <textarea id="message-input" placeholder="Type a message to analyze..."></textarea>
+            <button id="analyze-button">Analyze</button>
+        </footer>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
